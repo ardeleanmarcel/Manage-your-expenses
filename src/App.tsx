@@ -1,5 +1,7 @@
-import { Typography } from "@mui/material";
-import Expenses from "./ExpensesColumns/ExpensesColumns";
+import './App.css'
+
+import Expenses from './ExpensesColumns/ExpensesColumns'
+import { Typography } from '@mui/material'
 
 function App() {
   return (
@@ -9,7 +11,7 @@ function App() {
       </Typography>
       <Expenses />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
