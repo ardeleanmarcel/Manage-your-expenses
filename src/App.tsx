@@ -1,6 +1,6 @@
 import './App.css'
 
-import Expenses from './ExpensesColumns/ExpensesColumns'
+import Login from './Login/Login'
 import { Typography } from '@mui/material'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <Typography variant="h4" component="h2" align="center">
         Manage Your Expenses
       </Typography>
-      <Expenses />
+      <Login />
     </div>
   )
 }
