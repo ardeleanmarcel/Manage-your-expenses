@@ -1,16 +1,18 @@
-import { Typography } from '@mui/material'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 import Login from './Pages/Login/Login'
+import Register from './Pages/Register/Register'
 import './App.css'
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <Typography variant="h4" component="h2" align="center">
-        Manage Your Expenses
-      </Typography>
-      <Login />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
-
-export default App

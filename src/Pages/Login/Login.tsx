@@ -1,34 +1,42 @@
-import { Button, TextField, ThemeProvider, createTheme } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import {
+  Button,
+  TextField,
+  ThemeProvider,
+  Typography,
+  createTheme,
+} from '@mui/material'
+
 import './Login.css'
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#FF5733',
-      // light: will be calculated from palette.primary.main,
-      // dark: will be calculated from palette.primary.main,
-      // contrastText: will be calculated to contrast with palette.primary.main
-    },
-    secondary: {
-      main: '#7b1fa2', //palette.secondary.dark
-      // light: '#F5EBFF',
-      // dark: will be calculated from palette.secondary.main,
-      // contrastText: '#47008F',
+      main: '#4B0082',
     },
   },
 })
 
 export default function Login() {
+  const navigate = useNavigate()
+
+  const handleRegister = () => {
+    navigate('/register')
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <div className="container">
+        <Typography variant="h4" component="h2" align="center">
+          Manage Your Expenses
+        </Typography>
         <TextField id="outlined-basic" label="Username" variant="outlined" />
         <TextField id="outlined-basic" label="Password" variant="outlined" />
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="primary" disabled={true}>
           Login
         </Button>
         <div>You do not have an account? Register below</div>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={handleRegister}>
           Register
         </Button>
       </div>
