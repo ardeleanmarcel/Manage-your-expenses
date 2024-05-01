@@ -1,7 +1,6 @@
-import './App.css'
-
-import Login from './Login/Login'
 import { Typography } from '@mui/material'
+import Login from './Pages/Login/Login'
+import './App.css'
 
 function App() {
   return (
