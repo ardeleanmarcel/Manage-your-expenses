@@ -1,10 +1,4 @@
-import {
-  Button,
-  Paper,
-  TextField,
-  ThemeProvider,
-  createTheme,
-} from '@mui/material'
+import { Button, TextField, ThemeProvider, createTheme } from '@mui/material'
 import './Login.css'
 
 const theme = createTheme({
@@ -27,19 +21,17 @@ const theme = createTheme({
 export default function Login() {
   return (
     <ThemeProvider theme={theme}>
-      <Paper>
-        <div className="container">
-          <TextField id="outlined-basic" label="Username" variant="outlined" />
-          <TextField id="outlined-basic" label="Password" variant="outlined" />
-          <Button variant="contained" color="secondary">
-            Login
-          </Button>
-          <div>You do not have an account? Register below</div>
-          <Button variant="contained" color="primary">
-            Register
-          </Button>
-        </div>
-      </Paper>
+      <div className="container">
+        <TextField id="outlined-basic" label="Username" variant="outlined" />
+        <TextField id="outlined-basic" label="Password" variant="outlined" />
+        <Button variant="contained" color="secondary">
+          Login
+        </Button>
+        <div>You do not have an account? Register below</div>
+        <Button variant="contained" color="primary">
+          Register
+        </Button>
+      </div>
     </ThemeProvider>
   )
 }
