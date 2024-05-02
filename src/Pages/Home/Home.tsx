@@ -7,7 +7,7 @@ import {
   createTheme,
 } from '@mui/material'
 
-import './Login.css'
+import './Home.css'
 
 const theme = createTheme({
   palette: {
@@ -17,7 +17,7 @@ const theme = createTheme({
   },
 })
 
-export default function Login() {
+export default function Home() {
   const navigate = useNavigate()
 
   const handleRegister = () => {
