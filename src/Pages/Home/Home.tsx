@@ -1,23 +1,16 @@
 import { useNavigate } from 'react-router-dom'
-import {
-  Button,
-  TextField,
-  ThemeProvider,
-  Typography,
-  createTheme,
-} from '@mui/material'
+import { Button, TextField, Typography } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 
-import './Home.css'
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#4B0082',
-    },
+const useStyles = makeStyles({
+  container: {
+    display: 'grid',
+    gap: '50px',
   },
 })
 
 export default function Home() {
+  const classes = useStyles()
   const navigate = useNavigate()
 
   const handleRegister = () => {
@@ -25,21 +18,24 @@ export default function Home() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className="container">
-        <Typography variant="h4" component="h2" align="center">
-          Manage Your Expenses
-        </Typography>
-        <TextField id="outlined-basic" label="Username" variant="outlined" />
-        <TextField id="outlined-basic" label="Password" variant="outlined" />
-        <Button variant="contained" color="primary" disabled={true}>
-          Login
-        </Button>
-        <div>You do not have an account? Register below</div>
-        <Button variant="contained" color="primary" onClick={handleRegister}>
-          Register
-        </Button>
-      </div>
-    </ThemeProvider>
+    <div className={classes.container}>
+      <Typography variant="h4" component="h2" align="center">
+        Manage Your Expenses
+      </Typography>
+      <TextField id="outlined-basic" label="Username" variant="outlined" />
+      <TextField
+        type="password"
+        id="outlined-basic"
+        label="Password"
+        variant="outlined"
+      />
+      <Button variant="contained" color="primary" disabled={true}>
+        Login
+      </Button>
+      <div>You do not have an account? Register below</div>
+      <Button variant="contained" color="primary" onClick={handleRegister}>
+        Register
+      </Button>
+    </div>
   )
 }
