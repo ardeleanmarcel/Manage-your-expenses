@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material'
 
 import Register from './Pages/Register/Register'
-import Home from './Pages/Home/Home'
+import LoginWithFormik from './Pages/Home/Home'
 import './App.css'
 
 const theme = createTheme({
@@ -16,14 +16,12 @@ const theme = createTheme({
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="register" element={<Register />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginWithFormik />} />
+          <Route path="register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }
