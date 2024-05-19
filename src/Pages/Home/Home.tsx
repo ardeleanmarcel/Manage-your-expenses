@@ -1,22 +1,30 @@
 import { useNavigate } from 'react-router-dom'
 import { useFormikContext } from 'formik'
 
-import { Button, TextField, Typography } from '@mui/material'
+import { Button, TextField, Theme, Typography } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 import { withFormik } from '../../withFormik'
+import { useContext } from 'react'
+import { ColorModeContext } from '../../App'
 
 const initialValues = {
   username: '',
   password: '',
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles<Theme>((theme) => ({
   container: {
     display: 'grid',
     gap: '50px',
   },
-})
+  title: {
+    color: theme.palette.text.primary,
+  },
+  actionText: {
+    color: theme.palette.text.secondary,
+  },
+}))
 
 function Home() {
   const classes = useStyles()
@@ -29,10 +37,17 @@ function Home() {
   const { handleChange, values, handleSubmit, isSubmitting } =
     useFormikContext<typeof initialValues>()
 
+  const { toggleColorMode } = useContext(ColorModeContext)
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={classes.container}>
-        <Typography variant="h4" component="h2" align="center">
+        <Typography
+          variant="h4"
+          component="h2"
+          align="center"
+          className={classes.title}
+        >
           Manage Your Expenses
         </Typography>
         <TextField
@@ -63,7 +78,9 @@ function Home() {
         >
           Login
         </Button>
-        <div>You do not have an account? Register below</div>
+        <div className={classes.actionText}>
+          You do not have an account? Register below
+        </div>
         <Button
           variant="contained"
           color="primary"
@@ -72,6 +89,7 @@ function Home() {
         >
           Register
         </Button>
+        <Button onClick={toggleColorMode}>Toggle Color Mode</Button>
       </div>
     </form>
   )
