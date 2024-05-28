@@ -22,7 +22,7 @@ const useStyles = makeStyles<Theme>((theme) => ({
     color: theme.palette.text.primary,
   },
   actionText: {
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.primary,
   },
 }))
 

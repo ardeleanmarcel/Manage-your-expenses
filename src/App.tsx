@@ -1,5 +1,7 @@
+import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import {
+  Button,
   GlobalStyles,
   PaletteMode,
   ThemeProvider,
@@ -9,7 +11,6 @@ import {
 import Register from './Pages/Register/Register'
 import LoginWithFormik from './Pages/Home/Home'
 import './App.css'
-import React from 'react'
 
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
@@ -24,7 +25,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
             default: '#F8F8FF',
           },
           text: {
-            primary: '#000000',
+            primary: '#141414 ',
             secondary: '#4B0082',
           },
           action: {
@@ -34,13 +35,13 @@ const getDesignTokens = (mode: PaletteMode) => ({
       : {
           // palette values for dark mode
           primary: {
-            main: '#FF0000',
+            main: '#4B0082',
           },
           background: {
             default: '#121212',
           },
           text: {
-            primary: '#FFFFFF',
+            primary: '#F5F5F5',
             secondary: '#ffcccb',
           },
           action: {
@@ -68,6 +69,12 @@ export default function App() {
     []
   )
 
+  const changeTheme = () => {
+    setMode((prevMode: PaletteMode) =>
+      prevMode === 'light' ? 'dark' : 'light'
+    )
+  }
+
   // Update the theme only if the mode changes
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode])
 
@@ -81,6 +88,7 @@ export default function App() {
             },
           }}
         />
+        <Button onClick={changeTheme}>Toggle Color Mode</Button>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginWithFormik />} />
