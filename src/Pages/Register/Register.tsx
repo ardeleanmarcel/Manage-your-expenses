@@ -71,6 +71,7 @@ export default function Register() {
             required
             label="First Name"
             name="firstName"
+            color="inputsColor"
             value={userInput.firstName}
             onChange={(e) => handleInput(e)}
             aria-invalid="false"
@@ -82,6 +83,7 @@ export default function Register() {
           <TextField
             required
             label="Last Name"
+            color="inputsColor"
             value={userInput.lastName}
             name="lastName"
             onChange={(e) => handleInput(e)}
@@ -93,6 +95,7 @@ export default function Register() {
           <TextField
             required
             label="Username"
+            color="inputsColor"
             value={userInput.username}
             name="username"
             onChange={(e) => handleInput(e)}
@@ -107,6 +110,7 @@ export default function Register() {
             type="password"
             value={userInput.password}
             name="password"
+            color="inputsColor"
             onChange={(e) => handleInput(e)}
             sx={inputsStyle}
             fullWidth
@@ -117,6 +121,7 @@ export default function Register() {
             required
             label="Confirm Password"
             type="password"
+            color="inputsColor"
             value={userInput.confirmPassword}
             name="confirmPassword"
             onChange={(e) => handleInput(e)}
@@ -127,9 +132,8 @@ export default function Register() {
 
         <Button
           variant="contained"
+          color="secondary"
           sx={{
-            bgcolor: 'black',
-            color: 'white',
             boxShadow: 3,
             marginTop: '40px',
             marginBottom: '40px',
@@ -143,8 +147,8 @@ export default function Register() {
         </Typography>
         <Button
           variant="outlined"
+          color="secondary"
           sx={{
-            color: 'black',
             border: '1px solid black',
             boxShadow: 3,
             marginBottom: '20px',

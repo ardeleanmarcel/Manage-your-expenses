@@ -1,16 +1,16 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
   Button,
   GlobalStyles,
   PaletteMode,
   ThemeProvider,
   createTheme,
-} from '@mui/material'
+} from '@mui/material';
 
-import Register from './Pages/Register/Register'
-import LoginWithFormik from './Pages/Home/Home'
-import './App.css'
+import Register from './Pages/Register/Register';
+import LoginWithFormik from './Pages/Home/Home';
+import './App.css';
 
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
@@ -21,6 +21,12 @@ const getDesignTokens = (mode: PaletteMode) => ({
           primary: {
             main: '#4B0082',
           },
+          secondary: {
+            main: '#121212',
+          },
+          inputsColor: {
+            main: '#121212',
+          },
           background: {
             default: '#F8F8FF',
           },
@@ -28,14 +34,17 @@ const getDesignTokens = (mode: PaletteMode) => ({
             primary: '#141414 ',
             secondary: '#4B0082',
           },
-          action: {
-            active: '#4B0082',
-          },
         }
       : {
           // palette values for dark mode
           primary: {
             main: '#4B0082',
+          },
+          secondary: {
+            main: '#F8F8FF',
+          },
+          inputsColor: {
+            main: '#F8F8FF',
           },
           background: {
             default: '#121212',
@@ -44,39 +53,47 @@ const getDesignTokens = (mode: PaletteMode) => ({
             primary: '#F5F5F5',
             secondary: '#ffcccb',
           },
-          action: {
-            active: 'red',
-          },
         }),
   },
-})
+  components: {
+    MuiTextField: {
+      defaultProps: {
+        InputLabelProps: {
+          style: {
+            color: mode === 'light' ? '#121212' : '#F8F8FF', // Default label color for TextField
+          },
+        },
+      },
+    },
+  },
+});
 
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
-})
+});
 
 export default function App() {
-  const [mode, setMode] = React.useState<PaletteMode>('light')
+  const [mode, setMode] = React.useState<PaletteMode>('light');
   const colorMode = React.useMemo(
     () => ({
       // The dark mode switch would invoke this method
       toggleColorMode: () => {
         setMode((prevMode: PaletteMode) =>
           prevMode === 'light' ? 'dark' : 'light'
-        )
+        );
       },
     }),
     []
-  )
+  );
 
   const changeTheme = () => {
     setMode((prevMode: PaletteMode) =>
       prevMode === 'light' ? 'dark' : 'light'
-    )
-  }
+    );
+  };
 
   // Update the theme only if the mode changes
-  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode])
+  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -88,7 +105,19 @@ export default function App() {
             },
           }}
         />
-        <Button onClick={changeTheme}>Toggle Color Mode</Button>
+        <Button
+          size="small"
+          variant="contained"
+          color="secondary"
+          onClick={changeTheme}
+          sx={{
+            display: 'flex',
+            position: 'absolute',
+          }}
+          // endIcon
+        >
+          {mode === 'light' ? 'Dark Theme' : 'Light Theme'}
+        </Button>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginWithFormik />} />
@@ -97,5 +126,5 @@ export default function App() {
         </BrowserRouter>
       </ThemeProvider>
     </ColorModeContext.Provider>
-  )
+  );
 }
