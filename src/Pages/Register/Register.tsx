@@ -58,7 +58,9 @@ export default function Register() {
           variant="h5"
           fontWeight="fontWeightBold"
           sx={{
-            marginBottom: '40px',
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '25px 0px 25px 0px',
           }}
         >
           Register account
@@ -158,6 +160,7 @@ export default function Register() {
         >
           Login
         </Button>
+        {/* TODO -> culoarea la login button pe dark theme */}
       </CardContent>
     </Card>
   );

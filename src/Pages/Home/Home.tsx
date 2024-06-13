@@ -25,7 +25,8 @@ const useStyles = makeStyles<Theme>((theme) => ({
   },
   title: {
     color: theme.palette.text.primary,
-    padding: '10px 0px 10px 0px',
+    marginTop: '30px !important',
+    //TODO -> remove '!important'
   },
   actionText: {
     display: 'flex',
@@ -111,6 +112,7 @@ function Home() {
             >
               Register
             </Button>
+            {/* TODO -> culoarea la register button pe dark theme */}
           </div>
         </form>
       </CardContent>

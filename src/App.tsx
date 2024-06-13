@@ -107,14 +107,12 @@ export default function App() {
         />
         <Button
           size="small"
-          variant="contained"
+          variant="outlined"
           color="secondary"
           onClick={changeTheme}
           sx={{
-            display: 'flex',
-            position: 'absolute',
+            top: 50,
           }}
-          // endIcon
         >
           {mode === 'light' ? 'Dark Theme' : 'Light Theme'}
         </Button>
