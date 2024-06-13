@@ -69,6 +69,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
 });
 
 export const ColorModeContext = React.createContext({
+  mode: 'light',
   toggleColorMode: () => {},
 });
 
@@ -96,7 +97,9 @@ export default function App() {
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
+    <ColorModeContext.Provider
+      value={{ mode, toggleColorMode: colorMode.toggleColorMode }}
+    >
       <ThemeProvider theme={theme}>
         <GlobalStyles
           styles={{

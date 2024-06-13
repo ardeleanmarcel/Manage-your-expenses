@@ -1,14 +1,19 @@
+import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+
+import { ColorModeContext } from '../../App';
 
 export default function Register() {
   const navigate = useNavigate();
+  const { mode } = useContext(ColorModeContext);
+
   const [userInput, setUserInput] = useState({
     firstName: '',
     lastName: '',
@@ -151,7 +156,8 @@ export default function Register() {
           variant="outlined"
           color="secondary"
           sx={{
-            border: '1px solid black',
+            border: '1px solid',
+            borderColor: mode === 'light' ? 'black' : 'white',
             boxShadow: 3,
             marginBottom: '20px',
           }}
@@ -160,7 +166,6 @@ export default function Register() {
         >
           Login
         </Button>
-        {/* TODO -> culoarea la login button pe dark theme */}
       </CardContent>
     </Card>
   );

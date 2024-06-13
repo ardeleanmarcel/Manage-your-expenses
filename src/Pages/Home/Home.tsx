@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import { useFormikContext } from 'formik';
 
 import {
@@ -12,6 +13,7 @@ import {
 import { makeStyles } from '@mui/styles';
 
 import { withFormik } from '../../withFormik';
+import { ColorModeContext } from '../../App';
 
 const initialValues = {
   username: '',
@@ -25,7 +27,7 @@ const useStyles = makeStyles<Theme>((theme) => ({
   },
   title: {
     color: theme.palette.text.primary,
-    marginTop: '30px !important',
+    marginTop: '40px !important',
     //TODO -> remove '!important'
   },
   actionText: {
@@ -39,12 +41,14 @@ function Home() {
   const classes = useStyles();
   const navigate = useNavigate();
 
+  const { handleChange, values, handleSubmit, isSubmitting } =
+    useFormikContext<typeof initialValues>();
+
+  const { mode } = useContext(ColorModeContext);
+
   const handleRegister = () => {
     navigate('/register');
   };
-
-  const { handleChange, values, handleSubmit, isSubmitting } =
-    useFormikContext<typeof initialValues>();
 
   return (
     <Card>
@@ -103,7 +107,8 @@ function Home() {
               variant="outlined"
               color="secondary"
               sx={{
-                border: '1px solid black',
+                border: '1px solid',
+                borderColor: mode === 'light' ? 'black' : 'white',
                 boxShadow: 3,
               }}
               fullWidth
@@ -112,7 +117,6 @@ function Home() {
             >
               Register
             </Button>
-            {/* TODO -> culoarea la register button pe dark theme */}
           </div>
         </form>
       </CardContent>
@@ -121,6 +125,7 @@ function Home() {
 }
 
 const handleSubmit = (values, { setSubmitting }) => {
+  console.log('handleSubmit');
   setTimeout(() => {
     alert(JSON.stringify(values, null, 2));
     setSubmitting(false);
