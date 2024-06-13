@@ -90,6 +90,7 @@ function Home() {
               disabled={isSubmitting}
             />
             <Button
+              type="submit"
               variant="contained"
               color="secondary"
               sx={{
@@ -125,7 +126,6 @@ function Home() {
 }
 
 const handleSubmit = (values, { setSubmitting }) => {
-  console.log('handleSubmit');
   setTimeout(() => {
     alert(JSON.stringify(values, null, 2));
     setSubmitting(false);
