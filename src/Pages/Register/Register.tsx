@@ -1,14 +1,19 @@
+import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+
+import { ColorModeContext } from '../../App';
 
 export default function Register() {
   const navigate = useNavigate();
+  const { mode } = useContext(ColorModeContext);
+
   const [userInput, setUserInput] = useState({
     firstName: '',
     lastName: '',
@@ -58,7 +63,9 @@ export default function Register() {
           variant="h5"
           fontWeight="fontWeightBold"
           sx={{
-            marginBottom: '40px',
+            display: 'flex',
+            justifyContent: 'center',
+            margin: '25px 0px 25px 0px',
           }}
         >
           Register account
@@ -71,6 +78,7 @@ export default function Register() {
             required
             label="First Name"
             name="firstName"
+            color="inputsColor"
             value={userInput.firstName}
             onChange={(e) => handleInput(e)}
             aria-invalid="false"
@@ -82,6 +90,7 @@ export default function Register() {
           <TextField
             required
             label="Last Name"
+            color="inputsColor"
             value={userInput.lastName}
             name="lastName"
             onChange={(e) => handleInput(e)}
@@ -93,6 +102,7 @@ export default function Register() {
           <TextField
             required
             label="Username"
+            color="inputsColor"
             value={userInput.username}
             name="username"
             onChange={(e) => handleInput(e)}
@@ -107,6 +117,7 @@ export default function Register() {
             type="password"
             value={userInput.password}
             name="password"
+            color="inputsColor"
             onChange={(e) => handleInput(e)}
             sx={inputsStyle}
             fullWidth
@@ -117,6 +128,7 @@ export default function Register() {
             required
             label="Confirm Password"
             type="password"
+            color="inputsColor"
             value={userInput.confirmPassword}
             name="confirmPassword"
             onChange={(e) => handleInput(e)}
@@ -127,9 +139,8 @@ export default function Register() {
 
         <Button
           variant="contained"
+          color="secondary"
           sx={{
-            bgcolor: 'black',
-            color: 'white',
             boxShadow: 3,
             marginTop: '40px',
             marginBottom: '40px',
@@ -143,9 +154,10 @@ export default function Register() {
         </Typography>
         <Button
           variant="outlined"
+          color="secondary"
           sx={{
-            color: 'black',
-            border: '1px solid black',
+            border: '1px solid',
+            borderColor: mode === 'light' ? 'black' : 'white',
             boxShadow: 3,
             marginBottom: '20px',
           }}
