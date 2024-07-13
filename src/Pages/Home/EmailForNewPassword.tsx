@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useState } from 'react';
+import Typography from '@mui/material/Typography';
 
 export function EmailForNewPassword() {
   const [userInput, setUserInput] = useState({ email: '' });
@@ -35,6 +36,9 @@ export function EmailForNewPassword() {
             value={userInput.email}
             onChange={(e) => handleInput(e)}
           ></TextField>
+          <Typography variant="caption">
+            Email contains "@" character
+          </Typography>
           <Button
             variant="contained"
             color="secondary"
