@@ -14,6 +14,7 @@ import { makeStyles } from '@mui/styles';
 
 import { withFormik } from '../../withFormik';
 import { ColorModeContext } from '../../App';
+import { ForgotPassword } from './ForgotPassword';
 
 const initialValues = {
   username: '',
@@ -89,6 +90,7 @@ function Home() {
               value={values.password}
               disabled={isSubmitting}
             />
+            <ForgotPassword />
             <Button
               type="submit"
               variant="contained"

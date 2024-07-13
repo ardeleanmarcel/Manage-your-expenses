@@ -1,0 +1,44 @@
+import Stack from '@mui/material/Stack';
+import { Button } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { useState } from 'react';
+
+export function EmailForNewPassword() {
+  const [userInput, setUserInput] = useState({ email: '' });
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setUserInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <Card sx={{ width: '380px' }}>
+      <CardContent sx={{ marginTop: '30vh' }}>
+        <Stack>
+          <TextField
+            label="your email"
+            name="email"
+            value={userInput.email}
+            onChange={(e) => handleInput(e)}
+          ></TextField>
+          <Button
+            variant="contained"
+            color="secondary"
+            sx={{
+              boxShadow: 3,
+              marginTop: '40px',
+              marginBottom: '40px',
+            }}
+          >
+            Submit
+          </Button>
+        </Stack>
+      </CardContent>
+    </Card>
+  );
+}
