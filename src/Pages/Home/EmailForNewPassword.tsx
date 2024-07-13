@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 export function EmailForNewPassword() {
   const [userInput, setUserInput] = useState({ email: '' });
+  const [isActive, setIsActive] = useState(true);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -14,6 +15,14 @@ export function EmailForNewPassword() {
       ...prev,
       [name]: value,
     }));
+
+    console.log('value', value);
+
+    if (value.includes('@')) {
+      setIsActive(false);
+    } else {
+      setIsActive(true);
+    }
   };
 
   return (
@@ -34,6 +43,7 @@ export function EmailForNewPassword() {
               marginTop: '40px',
               marginBottom: '40px',
             }}
+            disabled={isActive}
           >
             Submit
           </Button>

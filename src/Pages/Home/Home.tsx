@@ -56,6 +56,7 @@ function Home() {
       <CardContent
         sx={{
           textAlign: 'left',
+          marginTop: '30px',
         }}
       >
         <form onSubmit={handleSubmit}>
