@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "20.12.2"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -14,7 +17,9 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.16",
     "@mui/styles": "^5.15.16",
+    "@trpc/client": "^11.0.0-rc.364",
     "formik": "^2.4.6",
+    "mye-apis": "github:ardeleanmarcel/mye-APIs",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0"
