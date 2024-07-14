@@ -8,6 +8,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 
+import { client } from '../../api/apiClient';
 import { ColorModeContext } from '../../App';
 
 export default function Register() {
@@ -18,6 +19,7 @@ export default function Register() {
     firstName: '',
     lastName: '',
     username: '',
+    email: '',
     password: '',
     confirmPassword: '',
   });
@@ -50,6 +52,16 @@ export default function Register() {
 
   const handleGoToSignIn = () => {
     navigate('/');
+  };
+
+  const handleRegister = async () => {
+    const res = await client.users.create.mutate({
+      username: userInput.username,
+      password: userInput.password,
+      email: userInput.email,
+    });
+
+    console.log('res', res);
   };
 
   return (
@@ -110,6 +122,16 @@ export default function Register() {
             fullWidth
           />
         </Stack>
+        <TextField
+          required
+          label="Email"
+          color="inputsColor"
+          value={userInput.email}
+          name="email"
+          onChange={(e) => handleInput(e)}
+          sx={inputsStyle}
+          fullWidth
+        />
         <Stack>
           <TextField
             required
@@ -146,6 +168,7 @@ export default function Register() {
             marginBottom: '40px',
           }}
           fullWidth
+          onClick={handleRegister}
         >
           Register
         </Button>
