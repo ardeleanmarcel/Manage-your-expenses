@@ -5,10 +5,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useState } from 'react';
 import Typography from '@mui/material/Typography';
+import { ModalReceivedEmail } from './ModalReceivedEmail';
 
 export function EmailForNewPassword() {
   const [userInput, setUserInput] = useState({ email: '' });
   const [isActive, setIsActive] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -24,6 +26,14 @@ export function EmailForNewPassword() {
     } else {
       setIsActive(true);
     }
+  };
+
+  const handleSubmitOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   };
 
   return (
@@ -48,9 +58,11 @@ export function EmailForNewPassword() {
               marginBottom: '40px',
             }}
             disabled={isActive}
+            onClick={handleSubmitOpenModal}
           >
             Submit
           </Button>
+          {openModal && <ModalReceivedEmail onClose={handleCloseModal} />}
         </Stack>
       </CardContent>
     </Card>
