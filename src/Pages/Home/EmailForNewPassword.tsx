@@ -19,8 +19,6 @@ export function EmailForNewPassword() {
       [name]: value,
     }));
 
-    console.log('value', value);
-
     if (value.includes('@')) {
       setIsActive(false);
     } else {
