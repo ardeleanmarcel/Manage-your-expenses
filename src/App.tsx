@@ -10,6 +10,7 @@ import {
 
 import Register from './Pages/Register/Register';
 import LoginWithFormik from './Pages/Home/Home';
+import { VerifyEmail } from './Pages/VerifyEmail/VerifyEmail';
 import './App.css';
 
 const getDesignTokens = (mode: PaletteMode) => ({
@@ -93,7 +94,6 @@ export default function App() {
     );
   };
 
-  // Update the theme only if the mode changes
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   return (
@@ -123,6 +123,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LoginWithFormik />} />
             <Route path="register" element={<Register />} />
+            <Route path="verify-email" element={<VerifyEmail />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
