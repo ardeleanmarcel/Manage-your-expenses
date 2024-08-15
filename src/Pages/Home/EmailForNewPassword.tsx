@@ -28,7 +28,7 @@ export function EmailForNewPassword() {
     }
   };
 
-  const handleSubmitOpenModal = () => {
+  const handleOpenModal = () => {
     setOpenModal(true);
   };
 
@@ -58,11 +58,16 @@ export function EmailForNewPassword() {
               marginBottom: '40px',
             }}
             disabled={isActive}
-            onClick={handleSubmitOpenModal}
+            onClick={handleOpenModal}
           >
             Submit
           </Button>
-          {openModal && <ModalReceivedEmail onClose={handleCloseModal} />}
+          {openModal && (
+            <ModalReceivedEmail
+              handleCloseModal={handleCloseModal}
+              openModal={openModal}
+            />
+          )}
         </Stack>
       </CardContent>
     </Card>
